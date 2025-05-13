@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="education.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="My Portfolio Logo" />
+      <span class="logo-text">My Portfolio</span>
+    </div>
+    <button class="hamburger" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="nav-links">
+      <a href="index.html">OVERVIEW</a>
+      <a href="skills-hobbies.html">SKILLS/HOBBIES</a>
+      <a href="projects.html">PROJECTS</a>
+      <a href="education.html">EDUCATION</a>
+    </nav>
+  </header>
+
+  <div class="profile-section">
+    <div class="profile-image">
+      <img src="educationl-profile.jpg" alt="Your Picture" class="profile-pic" />
+      <h1 class="name-below">Jan Michael B. Torejas</h1>
+      <h4>janmichaeltorejas31@gmail.com</h4>
+      <h5>Contact no.: 09075125259</h5>
+    </div>
+    <div class="my-text">
+      <h2>Education & Details</h2><br>
+      <div class="section-box">
+        <h3>Bio</h3>
+        <p><strong>Name:</strong> Jan Michael B. Torejas</p>
+        <p><strong>Age:</strong> 33</p>
+        <p><strong>Birthday:</strong> Jan 25, 1992</p>
+        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Religion:</strong> Roman Catholic</p>
+        <p><strong>Citizenship:</strong> Filipino</p><br>
+
+        <h3>Education</h3>
+        <p><strong>Elementary:</strong> Central Elem. School (2003–2004)</p>
+        <p><strong>Senior High:</strong> Andress Soriano College (2007–2008)</p>
+        <p><strong>Diploma:</strong> IT Diploma (Graduated) (2023–2024)</p>
+        <p><strong>College:</strong> De La Salle John Bosco College, BSIT (Present)</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://gitlab.com" target="_blank"><i class="fab fa-gitlab"></i></a>
+    <a href="https://your-awardspace-link.com" target="_blank"><i class="fas fa-globe"></i></a>
+    <a href="mailto:you@example.com"><i class="fas fa-envelope"></i></a>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

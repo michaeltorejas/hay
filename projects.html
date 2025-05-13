@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="projects.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="My Portfolio Logo" />
+      <span class="logo-text">My Projects</span>
+    </div>
+    <button class="hamburger" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <nav class="nav-links">
+      <a href="index.html">OVERVIEW</a>
+      <a href="skills-hobbies.html">SKILLS/HOBBIES</a>
+      <a href="projects.html">PROJECTS</a>
+      <a href="education.html">EDUCATION</a>
+    </nav>
+  </header>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <h2>My Previous Projects</h2><br />
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="DBMS.PNG" alt="Project 1" />
+      </div>
+      <div class="gallery-item">
+        <img src="Visual_Graphic_design.png" alt="Project 2" />
+      </div>
+      <div class="gallery-item">
+        <img src="jmt casino.PNG" alt="Project 3" />
+      </div>
+    </div>
+  </section>
+
+  <br />
+
+  <section class="gallery-section">
+    <h2>My Current Projects</h2><br />
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="Brgy. Pamanlinan Demographic Profilling System.PNG" alt="Project 4" />
+      </div>
+      <div class="gallery-item">
+        <img src="login-form.PNG" alt="Project 5" />
+      </div>
+      <div class="gallery-item">
+        <img src="household.PNG" alt="Project 6" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer"> 
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://gitlab.com" target="_blank"><i class="fab fa-gitlab"></i></a>
+    <a href="https://your-awardspace-link.com" target="_blank"><i class="fas fa-globe"></i></a>
+    <a href="mailto:you@example.com"><i class="fas fa-envelope"></i></a>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <button class="prev" onclick="navigateModal(-1)">&#10094;</button>
+    <div class="modal-content">
+      <img class="modal-img" id="modalImg" src="" alt="Expanded Image" />
+      <video class="modal-video" id="modal-video" controls style="display:none;">
+        <source id="modal-video-source" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <button class="next" onclick="navigateModal(1)">&#10095;</button>
+  </div>
+
+  <!-- Script -->
+  <script>
+    let currentIndex = 0;
+    const galleryItems = [
+      { src: "DBMS.PNG", type: "image" },
+      { src: "Torejas_Final output _DSA.mp4", type: "video" },
+      { src: "Visual_Graphic_design.png", type: "image" },
+      { src: "jmt casino.PNG", type: "image" },
+      { src: "Brgy. Pamanlinan Demographic Profilling System.PNG", type: "image" },
+      { src: "login-form.PNG", type: "image" },
+      { src: "household.PNG", type: "image" }
+    ];
+
+    function openModal(src, type, index) {
+      const modal = document.getElementById("modal");
+      const modalImg = document.getElementById("modalImg");
+      const modalVideo = document.getElementById("modal-video");
+      const modalVideoSource = document.getElementById("modal-video-source");
+
+      currentIndex = index;
+
+      if (type === "video") {
+        modalImg.style.display = "none";
+        modalVideo.style.display = "block";
+        modalVideoSource.src = src;
+        modalVideo.load();
+      } else {
+        modalImg.src = src;
+        modalImg.style.display = "block";
+        modalVideo.style.display = "none";
+      }
+
+      modal.style.display = "flex";
+    }
+
+    function navigateModal(direction) {
+      const totalItems = galleryItems.length;
+      currentIndex = (currentIndex + direction + totalItems) % totalItems;
+      const item = galleryItems[currentIndex];
+      openModal(item.src, item.type, currentIndex);
+    }
+
+    document.getElementById("modalClose").addEventListener("click", () => {
+      const modal = document.getElementById("modal");
+      const modalVideo = document.getElementById("modal-video");
+      modal.style.display = "none";
+      modalVideo.pause();
+      modalVideo.currentTime = 0;
+    });
+
+    document.querySelectorAll(".gallery-item").forEach((item, index) => {
+      item.addEventListener("click", () => {
+        const img = item.querySelector("img");
+        const video = item.querySelector("video");
+
+        if (img) {
+          openModal(img.src, "image", index);
+        } else if (video) {
+          const source = video.querySelector("source");
+          if (source) openModal(source.src, "video", index);
+        }
+      });
+    });
+
+    window.addEventListener("click", (e) => {
+      const modal = document.getElementById("modal");
+      if (e.target === modal) {
+        modal.style.display = "none";
+        const modalVideo = document.getElementById("modal-video");
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+      }
+    });
+
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      hamburger.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
