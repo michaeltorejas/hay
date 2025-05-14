@@ -211,37 +211,36 @@ h2 {
 }
 
 /* Responsive */
+/* Responsive */
 @media (max-width: 768px) {
   header {
     flex-wrap: wrap;
-    justify-content: space-between;
   }
 
   .hamburger {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 21px;
-    z-index: 100;
   }
 
   .nav-links {
     display: none;
     flex-direction: column;
-    width: 50%;
-    max-width: 400px;
-    position: relative;
+    width: 90%;                  /* wider, more natural on mobile */
+    max-width: 100%;
+    position: absolute;
     top: 100%;
-    left: 50%;
-    padding: 50px;
+    left: 5%;                    /* consistent padding from sides */
+    transform: none;             /* no need to center with transform */
+    padding: 20px 15px;          /* reduced padding for mobile space */
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 0 0 12px 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1.5s ease-out;
-    transition: max-height 0.6s ease, opacity 0.3s ease;
-    transform: translateX(-50%);
+    z-index: 99;
+    
+    /* Optional size control */
+    max-height: 400px;           /* prevent overly tall menu */
+    overflow-y: auto;            /* allow scroll if needed */
   }
 
   .nav-links.active {
@@ -249,15 +248,9 @@ h2 {
   }
 
   .nav-links a {
-    padding: 8px 10px;
     font-size: 14px;
+    padding: 10px;
     border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  .nav-links a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #000;
   }
 
   .logo img {
@@ -267,8 +260,8 @@ h2 {
   .profile-section {
     flex-direction: column-reverse;
     text-align: center;
-    padding: 20px;
     gap: 20px;
+    padding: 20px;
   }
 
   p {
@@ -279,22 +272,16 @@ h2 {
   .profile-pic {
     width: 150px;
     height: 150px;
-    margin-bottom: 20px;
   }
 
   .footer {
-    margin-top: auto;
+    justify-content: center;
     padding: 20px;
     border-radius: 12px 12px 0 0;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .footer a:hover {
-    color: #000;
   }
 
   body {
     background-image: url('media-background.png');
   }
 }
+
