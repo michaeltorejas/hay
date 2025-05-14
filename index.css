@@ -220,39 +220,23 @@ h2 {
   .hamburger {
     display: flex;
   }
-   .hamburger {
-  display: none; /* becomes flex in media query */
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
 
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background-color: #fff;
-  border-radius: 2px;
-}
   .nav-links {
     display: none;
     flex-direction: column;
-    width: 90%;                  /* wider, more natural on mobile */
-    max-width: 100%;
+    width: 85%;
+    max-width:100%;
     position: absolute;
     top: 100%;
-    left: 5%;                    /* consistent padding from sides */
-    transform: none;             /* no need to center with transform */
-    padding: 20px 15px;          /* reduced padding for mobile space */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 40px 20px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 0 0 12px 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1.5s ease-out;
     z-index: 99;
-    
-    /* Optional size control */
-    max-height: 400px;           /* prevent overly tall menu */
-    overflow-y: auto;            /* allow scroll if needed */
   }
 
   .nav-links.active {
