@@ -220,7 +220,19 @@ h2 {
   .hamburger {
     display: flex;
   }
+   .hamburger {
+  display: none; /* becomes flex in media query */
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
 
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+}
   .nav-links {
     display: none;
     flex-direction: column;
