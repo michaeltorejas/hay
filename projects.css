@@ -95,9 +95,16 @@ header {
 
 /* === Responsive Header === */
 @media (max-width: 768px) {
-  header {
+ header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding: 1rem; /* adjust as needed */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* optional for visual separation */
   }
 
   .hamburger {
@@ -108,26 +115,25 @@ header {
     height: 21px;
     z-index: 100;
   }
-
   .nav-links {
     display: none;
     flex-direction: column;
-    position: absolute;
+    width: 100%;
+    max-width: 400px;
+    position: absolute; 
     top: 100%;
     left: 50%;
-    width: 50%;
-    max-width: 400px;
+    transform: translateX(-50%);
     padding: 50px;
-    gap: 10px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 0 0 12px 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1.5s ease-out;
+    transition: max-height 0.6s ease, opacity 0.3s ease;
   }
-
   .nav-links.active {
     display: flex;
+
   }
 
   .nav-links a {
@@ -135,6 +141,7 @@ header {
     font-size: 14px;
     padding: 8px 10px;
     border-radius: 6px;
+
   }
 
   .nav-links a:hover {
@@ -149,7 +156,7 @@ header {
 
 /* === Gallery Section === */
 .gallery-section {
-  padding: 10px 90px 0;
+  padding: 110px 90px 0;
   max-width: 1200px;
   margin: auto;
 }
