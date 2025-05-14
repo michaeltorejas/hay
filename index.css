@@ -1,16 +1,20 @@
-/* Reset & Base */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Base Styles */
 body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Segoe UI', sans-serif;
-  background: url('bacground.png') no-repeat center/cover;
+  background-image: url('bacground.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   text-align: center;
   padding: 10px;
   min-height: 100vh;
@@ -32,9 +36,11 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  position: relative;
+  border-radius: 12px;
+  margin-bottom: 30px;
   animation: slideDown 1s ease-out, navColorCycle 10s ease-in-out infinite;
-  z-index: 10;
+  position: relative;
+  z-index: 100;
 }
 
 .logo {
@@ -45,35 +51,35 @@ header {
 
 .logo img {
   height: 60px;
+  width: auto;
 }
 
 .logo-text {
   font-size: 1.5rem;
   color: rgb(56, 2, 2);
-  font-family: 'Great Vibes', cursive;
   font-weight: bold;
+  font-family: 'Great Vibes', cursive;
   letter-spacing: 2px;
 }
 
-/* Hamburger */
+/* Navigation */
 .hamburger {
   display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 26px;
-  height: 20px;
+  font-size: 28px;
   background: none;
   border: none;
+  color: white;
   cursor: pointer;
-  z-index: 100;
 }
-.bar {
+
+.hamburger .bar {
   height: 3px;
   width: 100%;
-  background-color: #fff;
+  background-color: white;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
+
 .hamburger.open .bar:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -84,11 +90,11 @@ header {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Navigation */
 .nav-links {
   display: flex;
-  gap: 25px;
+  gap: 20px;
 }
+
 .nav-links a {
   font-size: 80%;
   letter-spacing: 2.5px;
@@ -96,8 +102,9 @@ header {
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
-  text-shadow: 2px 2px 8px black;
+  text-shadow: 2px 2px 8px rgb(0, 0, 0);
 }
+
 .nav-links a:hover {
   color: #f67c01;
 }
@@ -114,13 +121,18 @@ header {
   padding: 40px 20px;
   text-align: left;
 }
+
 .my-text {
+  position: relative;
   max-width: 500px;
   animation: slideLeft 1s ease-out;
+  transition: transform 0.5s ease;
 }
+
 .profile-image {
   flex-shrink: 0;
 }
+
 .profile-pic {
   width: 230px;
   height: 230px;
@@ -130,6 +142,7 @@ header {
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
   animation: fadeIn 1.2s ease-out;
 }
+
 .profile-pic:hover {
   box-shadow: 0 0 35px rgba(255, 255, 255, 0.85);
   transition: box-shadow 0.4s ease;
@@ -141,36 +154,41 @@ h1 {
   margin: 5px 0;
   animation: fadeIn 1.4s ease-out;
 }
+
 h2 {
   color: rgb(3, 197, 68);
   font-weight: bold;
+  text-shadow: 2px 2px 8px rgb(0, 0, 0);
   font-size: 165%;
-  text-shadow: 2px 2px 8px black;
+  transition: color 0.3s;
 }
+
 .name-below {
   letter-spacing: 1px;
   color: rgb(189, 240, 5);
   font-weight: bold;
+  text-shadow: 2px 2px 8px rgb(0, 0, 0);
   font-size: 130%;
-  text-shadow: 2px 2px 8px black;
+  transition: color 0.3s;
 }
 
 /* Footer */
 .footer {
   margin-top: 40px;
-  padding: 20px;
+  padding: 20px 223px;
   border-radius: 12px;
   display: flex;
   justify-content: flex-end;
-  flex-wrap: wrap;
   gap: 20px;
 }
+
 .footer a {
   color: white;
   font-size: 20px;
   transition: color 0.3s ease, transform 0.3s ease;
-  text-shadow: 2px 2px 8px black;
+  text-shadow: 2px 2px 8px rgb(0, 0, 0);
 }
+
 .footer a:hover {
   color: #f67c01;
   transform: scale(1.2);
@@ -181,10 +199,12 @@ h2 {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 @keyframes slideDown {
   from { transform: translateY(-50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
 @keyframes slideLeft {
   from { transform: translateX(100px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
@@ -192,30 +212,41 @@ h2 {
 
 /* Responsive */
 @media (max-width: 768px) {
-  header {
+ header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem; /* adjust as needed */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* optional for visual separation */
   }
-
   .hamburger {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 21px;
+    z-index: 100;
   }
 
   .nav-links {
     display: none;
     flex-direction: column;
-    width: 85%;
-    max-width:100%;
+    width: 100%;
+    max-width: 400px;
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 40px 20px;
+    left: 2%;
+    padding: 50px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 0 0 12px 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     animation: fadeIn 1.5s ease-out;
-    z-index: 99;
+    transition: max-height 0.6s ease, opacity 0.3s ease;
   }
 
   .nav-links.active {
@@ -223,9 +254,15 @@ h2 {
   }
 
   .nav-links a {
+    padding: 8px 10px;
     font-size: 14px;
-    padding: 10px;
     border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #000;
   }
 
   .logo img {
@@ -235,8 +272,8 @@ h2 {
   .profile-section {
     flex-direction: column-reverse;
     text-align: center;
-    gap: 20px;
     padding: 20px;
+    gap: 20px;
   }
 
   p {
@@ -247,15 +284,24 @@ h2 {
   .profile-pic {
     width: 150px;
     height: 150px;
+    margin-bottom: 20px;
   }
 
   .footer {
-    justify-content: center;
+    margin-top: auto;
     padding: 20px;
     border-radius: 12px 12px 0 0;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
+  .footer a:hover {
+    color: #000;
+  }
   body {
-    background-color: #f67c01;
-}
+    background-image: url('media-background.png');
+    padding-top: 80px; /* adjust to the height of your header */
+
+  }
+
 }
